@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator GUID</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .guid {
+            margin-top: 20px;
+            font-family: monospace;
+            word-wrap: break-word;
+        }
+        .copy-btn {
+            background-color: #008CBA;
+        }
+        .copy-btn:hover {
+            background-color: #007bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GUID Generator</h1>
+        <button id="generateButton">Generate GUID</button>
+        <div id="guid" class="guid"></div>
+        <button id="copyButton" class="copy-btn" style="display: none;">Copy to a clipboard</button>
+    </div>
+
+    <script>
+        function generateGUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        document.getElementById('generateButton').addEventListener('click', function() {
+            const guid = generateGUID();
+            document.getElementById('guid').innerText = guid;
+            document.getElementById('copyButton').style.display = 'inline-block';
+            document.getElementById('copyButton').setAttribute('data-guid', guid);  
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const guid = this.getAttribute('data-guid'); 
+            navigator.clipboard.writeText(guid).then(function() {
+                alert('GUID copied to a clipboard');
+            }).catch(function(err) {
+                alert('Error: ' + err);
+            });
+        });
+    </script>
+</body>
+</html>
