@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator GUID</title>
+    <meta name="description" content="Generate unique GUIDs easily with our online tool. Perfect for use in programming and databases.">
+    <meta name="keywords" content="GUID, GUID generator, generate GUID, unique identifier, programming">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hilarious-kheer-e9faba.netlify.app/">
+    <title>GUID Generator - Online Tool for Creating Unique Identifiers</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,10 +54,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>GUID Generator</h1>
+        <h1>GUID Generator - Create Unique Identifiers Online</h1>
+        <p>Use our online tool to quickly and easily generate a unique GUID. Perfect for developers who need identifiers in their projects.</p>
         <button id="generateButton">Generate GUID</button>
         <div id="guid" class="guid"></div>
-        <button id="copyButton" class="copy-btn" style="display: none;">Copy to a clipboard</button>
+        <button id="copyButton" class="copy-btn" style="display: none;">Copy to Clipboard</button>
     </div>
 
     <script>
@@ -73,7 +79,7 @@
         document.getElementById('copyButton').addEventListener('click', function() {
             const guid = this.getAttribute('data-guid'); 
             navigator.clipboard.writeText(guid).then(function() {
-                alert('GUID copied to a clipboard');
+                alert('GUID copied to clipboard');
             }).catch(function(err) {
                 alert('Error: ' + err);
             });
